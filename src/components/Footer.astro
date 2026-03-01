@@ -1,0 +1,158 @@
+---
+import { condensedHours } from "../utils/openingHours";
+
+const currentYear = new Date().getFullYear();
+
+const openingHours = [
+    { day: "Di", hours: "17:30-23:00" },
+    { day: "Mi", hours: "17:30-23:00" },
+    { day: "Do", hours: "11:30-14:00 / 17:30-23:00" },
+    { day: "Fr", hours: "11:30-14:00 / 17:30-23:00" },
+    { day: "Sa", hours: "17:30-23:00" },
+];
+---
+
+<footer class="bg-surface-2 border-t border-line-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <h3
+                    class="text-xl font-heading font-semibold text-text-high mb-6"
+                >
+                    Kontakt
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <p
+                            class="text-lg font-heading font-medium text-accent-rose mb-2"
+                        >
+                            MÄDCHEN & WOLF
+                        </p>
+                        <address
+                            class="text-text-mid not-italic leading-relaxed"
+                        >
+                            Lange Gasse 20<br />2700 Wiener Neustadt<br
+                            />Österreich
+                        </address>
+                    </div>
+                    <a
+                        href="tel:+436763867782"
+                        class="flex items-center text-text-mid hover:text-accent-rose transition-colors"
+                        >+43 676 386 7782</a
+                    >
+                    <a
+                        href="mailto:reservierung@maedchenundwolf.at"
+                        class="flex items-start text-text-mid hover:text-accent-rose transition-colors"
+                        ><span class="break-all"
+                            >reservierung@maedchenundwolf.at</span
+                        ></a
+                    >
+                </div>
+            </div>
+
+            <div>
+                <h3
+                    class="text-xl font-heading font-semibold text-text-high mb-6"
+                >
+                    Öffnungszeiten
+                </h3>
+                <div class="space-y-3">
+                    {
+                        openingHours.map((item) => (
+                            <div class="flex justify-between items-center">
+                                <span class="text-text-mid font-medium">
+                                    {item.day}
+                                </span>
+                                <span class="text-text-mid text-sm">
+                                    {item.hours}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div>
+                <h3
+                    class="text-xl font-heading font-semibold text-text-high mb-6"
+                >
+                    Rechtliches & Social
+                </h3>
+                <div class="space-y-3 mb-8">
+                    <a
+                        href="/agb"
+                        class="block text-text-mid hover:text-accent-rose transition-colors"
+                        >AGB</a
+                    >
+                    <a
+                        href="/impressum"
+                        class="block text-text-mid hover:text-accent-rose transition-colors"
+                        >Impressum</a
+                    >
+                    <a
+                        href="/datenschutzerklaerung"
+                        class="block text-text-mid hover:text-accent-rose transition-colors"
+                        >Datenschutzerklärung</a
+                    >
+                    <a
+                        href="/cookie-richtlinie"
+                        class="block text-text-mid hover:text-accent-rose transition-colors"
+                        >Cookie-Richtlinie</a
+                    >
+                </div>
+
+                <div>
+                    <p class="text-sm font-medium text-text-high mb-3">
+                        Folgen Sie uns
+                    </p>
+                    <div class="flex space-x-4">
+                        <a
+                            href="https://www.instagram.com/maedchenundwolf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-text-mid hover:text-accent-rose transition-colors"
+                            aria-label="Instagram"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.88 1.62a1.12 1.12 0 1 1 0 2.25 1.12 1.12 0 0 1 0-2.25zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"
+                                ></path></svg
+                            >
+                        </a>
+                        <a
+                            href="https://share.google/vCCo3N31bkCBG9j7B"
+                            class="text-text-mid hover:text-accent-rose transition-colors"
+                            aria-label="Google"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-line-gold/20">
+            <div
+                class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+            >
+                <p class="text-text-mid text-sm">
+                    © {currentYear} MÄDCHEN & WOLF. Alle Rechte vorbehalten.
+                </p>
+                <p class="text-text-mid/70 text-xs">Website by <a href="https://gerdklingenschmid.at/projects/websites/" target="_blank">Gerd Klingenschmid</a></p>
+            </div>
+        </div>
+    </div>
+</footer>

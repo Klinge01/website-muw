@@ -1,0 +1,405 @@
+---
+// New 2025 gallery images
+const newGalleryImages = Array.from({ length: 74 }, (_, i) => ({
+  id: i + 1,
+  alt: `Mädchen & Wolf Impression ${i + 1}`,
+  src: `${import.meta.env.BASE_URL}images/2025_muw-${String(i + 1).padStart(2, '0')}.webp`,
+}));
+
+// Legacy images for variety
+const legacyImages = [
+  {
+    id: 100,
+    alt: "Restaurant Interieur",
+    src: `${import.meta.env.BASE_URL}images/restaurant-interior-1.webp`,
+  },
+  {
+    id: 101,
+    alt: "Kulinarische Kreationen",
+    src: `${import.meta.env.BASE_URL}images/food-presentation-1.webp`,
+  },
+  {
+    id: 102,
+    alt: "Atmosphäre & Ambiente",
+    src: `${import.meta.env.BASE_URL}images/restaurant-ambiance-1.webp`,
+  },
+];
+
+// Combine all images
+const allImages = [...newGalleryImages, ...legacyImages];
+
+// Initial display count
+const initialDisplayCount = 12;
+---
+
+<section id="impressionen" class="py-20 bg-ink">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-heading font-semibold tracking-heading text-text-high mb-4">
+        Eindrücke
+      </h2>
+      <p class="text-xl text-text-mid max-w-2xl mx-auto">
+        Erleben Sie die Atmosphäre und Kochkunst des Mädchen & Wolf
+      </p>
+    </div>
+
+    <!-- Gallery Grid - all items start hidden, JS shuffles & reveals -->
+    <div id="gallery-grid" class="gallery-mosaic mb-12">
+      {allImages.map((image) => (
+        <div
+          class="gallery-item hidden group cursor-pointer overflow-hidden border border-line-gold/20 hover:border-accent-rose/50 transition-all duration-300"
+          data-src={image.src}
+          data-alt={image.alt}
+        >
+          <div class="gallery-item-inner relative overflow-hidden">
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+
+            <!-- Hover overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+            <!-- Zoom icon on hover -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div class="w-12 h-12 rounded-full bg-accent-rose/80 flex items-center justify-center">
+                <svg class="w-6 h-6 text-ink" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Load More Button -->
+    <div id="load-more-container" class="text-center">
+      <button
+        id="load-more-btn"
+        type="button"
+        class="inline-flex items-center px-8 py-3 bg-transparent border border-line-gold text-text-mid hover:border-accent-rose hover:text-accent-rose transition-all duration-200 focus:ring-2 focus:ring-accent-rose focus:ring-offset-2 focus:ring-offset-ink"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        Mehr Eindrücke laden
+        <span id="remaining-count" class="ml-2 text-xs text-text-mid/60"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden bg-ink/95 backdrop-blur-sm">
+  <button
+    id="lightbox-close"
+    class="absolute top-4 right-4 z-10 w-12 h-12 flex items-center justify-center text-text-high hover:text-accent-rose transition-colors"
+    aria-label="Schließen"
+  >
+    <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <button
+    id="lightbox-prev"
+    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center text-text-high hover:text-accent-rose transition-colors bg-surface-1/50 rounded-full"
+    aria-label="Vorheriges Bild"
+  >
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+
+  <button
+    id="lightbox-next"
+    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center text-text-high hover:text-accent-rose transition-colors bg-surface-1/50 rounded-full"
+    aria-label="Nächstes Bild"
+  >
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <div class="absolute inset-0 flex items-center justify-center p-4 md:p-12">
+    <img
+      id="lightbox-image"
+      src=""
+      alt=""
+      class="max-w-full max-h-full object-contain transition-opacity duration-300"
+    />
+  </div>
+
+  <!-- Image counter -->
+  <div class="absolute bottom-4 left-1/2 -translate-x-1/2 text-text-mid text-sm">
+    <span id="lightbox-counter"></span>
+  </div>
+</div>
+
+<style>
+  /* Mosaic grid */
+  .gallery-mosaic {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-flow: dense;
+    gap: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .gallery-mosaic {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .gallery-mosaic {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Tile size variants */
+  .gallery-item .gallery-item-inner {
+    aspect-ratio: 1;
+  }
+
+  .gallery-item.tile-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .gallery-item.tile-large .gallery-item-inner {
+    aspect-ratio: 1;
+  }
+
+  .gallery-item.tile-wide {
+    grid-column: span 2;
+  }
+  .gallery-item.tile-wide .gallery-item-inner {
+    aspect-ratio: 16 / 9;
+  }
+
+  .gallery-item.tile-tall {
+    grid-row: span 2;
+  }
+  .gallery-item.tile-tall .gallery-item-inner {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+
+  /* On mobile, large tiles stay 2-col but tall tiles revert to 1x1 */
+  @media (max-width: 767px) {
+    .gallery-item.tile-tall {
+      grid-row: span 1;
+    }
+    .gallery-item.tile-tall .gallery-item-inner {
+      aspect-ratio: 1;
+    }
+  }
+
+  /* Fade-in animation */
+  .gallery-item.visible {
+    animation: fadeInUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Lightbox transitions */
+  #lightbox {
+    transition: opacity 0.3s ease;
+  }
+
+  #lightbox.active {
+    display: flex;
+  }
+
+  #lightbox-image {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Subtle hover lift */
+  @media (prefers-reduced-motion: no-preference) {
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 40px -10px rgba(201, 167, 122, 0.3);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('gallery-grid');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const remainingCount = document.getElementById('remaining-count');
+
+    if (!grid) return;
+
+    let currentIndex = 0;
+    let visibleItems: Element[] = [];
+    const batchSize = 12;
+    const initialCount = 12;
+
+    // --- Fisher-Yates shuffle of DOM children ---
+    const items = Array.from(grid.querySelectorAll('.gallery-item'));
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+    // Re-append in shuffled order
+    items.forEach(item => grid.appendChild(item));
+
+    // --- Apply mosaic tile pattern ---
+    // Pattern repeats every 8 items on desktop (4-col grid):
+    //   0: large (2x2)  1: small  2: small  3: tall (1x2)
+    //   4: small         5: wide (2x1)       6: small  7: small
+    // This fills exactly 4 columns per "row pair" with no gaps.
+    const tilePattern = ['tile-large', '', '', 'tile-tall', '', 'tile-wide', '', ''];
+
+    function applyPattern(item: Element, index: number) {
+      // Remove any old tile classes
+      item.classList.remove('tile-large', 'tile-wide', 'tile-tall');
+      const patternClass = tilePattern[index % tilePattern.length];
+      if (patternClass) {
+        item.classList.add(patternClass);
+      }
+    }
+
+    // Apply pattern to all items
+    const allItems = Array.from(grid.querySelectorAll('.gallery-item'));
+    allItems.forEach((item, i) => applyPattern(item, i));
+
+    // --- Reveal initial batch ---
+    function revealBatch(startIndex: number, count: number) {
+      const hiddenItems = allItems.filter(item => item.classList.contains('hidden'));
+      const batch = hiddenItems.slice(0, count);
+
+      batch.forEach((item, i) => {
+        item.classList.remove('hidden');
+        item.classList.add('visible');
+        (item as HTMLElement).style.animationDelay = `${i * 0.04}s`;
+        // Eagerly load first batch images
+        const img = item.querySelector('img');
+        if (img && startIndex === 0) {
+          img.loading = 'eager';
+        }
+      });
+    }
+
+    revealBatch(0, initialCount);
+
+    // Update visible items
+    function updateVisibleItems() {
+      visibleItems = allItems.filter(item => !item.classList.contains('hidden'));
+    }
+    updateVisibleItems();
+
+    // Update remaining count
+    function updateRemainingCount() {
+      const remaining = allItems.filter(item => item.classList.contains('hidden')).length;
+      if (remaining === 0) {
+        loadMoreContainer?.classList.add('hidden');
+      } else if (remainingCount) {
+        remainingCount.textContent = `(${remaining} weitere)`;
+      }
+    }
+    updateRemainingCount();
+
+    // --- Load more ---
+    loadMoreBtn?.addEventListener('click', () => {
+      revealBatch(visibleItems.length, batchSize);
+      updateVisibleItems();
+      updateRemainingCount();
+    });
+
+    // --- Lightbox ---
+    function openLightbox(index: number) {
+      currentIndex = index;
+      const item = visibleItems[index] as HTMLElement;
+      const src = item.dataset.src || '';
+      const alt = item.dataset.alt || '';
+
+      if (lightboxImage) {
+        lightboxImage.src = src;
+        lightboxImage.alt = alt;
+      }
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${index + 1} / ${visibleItems.length}`;
+      }
+      lightbox?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navigate(direction: number) {
+      currentIndex = (currentIndex + direction + visibleItems.length) % visibleItems.length;
+      const item = visibleItems[currentIndex] as HTMLElement;
+      const src = item.dataset.src || '';
+      const alt = item.dataset.alt || '';
+
+      if (lightboxImage) {
+        lightboxImage.style.opacity = '0';
+        setTimeout(() => {
+          lightboxImage.src = src;
+          lightboxImage.alt = alt;
+          lightboxImage.style.opacity = '1';
+        }, 150);
+      }
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${currentIndex + 1} / ${visibleItems.length}`;
+      }
+    }
+
+    // Click handlers on gallery items
+    allItems.forEach(item => {
+      item.addEventListener('click', () => {
+        updateVisibleItems();
+        const visibleIndex = visibleItems.indexOf(item);
+        if (visibleIndex !== -1) {
+          openLightbox(visibleIndex);
+        }
+      });
+    });
+
+    lightboxClose?.addEventListener('click', closeLightbox);
+    lightboxPrev?.addEventListener('click', () => navigate(-1));
+    lightboxNext?.addEventListener('click', () => navigate(1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox?.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigate(-1);
+      if (e.key === 'ArrowRight') navigate(1);
+    });
+
+    // Close on backdrop click
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  });
+</script>

@@ -1,0 +1,74 @@
+---
+---
+
+<nav class="sticky top-0 z-50 bg-ink/95 backdrop-blur-sm border-b border-line-gold/20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+          <img src={`${import.meta.env.BASE_URL}logos/maedchen-wolf-logo.svg`} alt="MÄDCHEN & WOLF Logo" class="h-12 w-auto">
+          <span class="hidden sm:block text-xl font-heading font-semibold tracking-heading text-text-high uppercase">
+            MÄDCHEN & WOLF
+          </span>
+        </a>
+      </div>
+
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a href="#menu-teaser" class="text-text-mid hover:text-text-high hover:underline decoration-accent-rose decoration-2 underline-offset-4 transition-all">Karten</a>
+          <a href="#events" class="text-text-mid hover:text-text-high hover:underline decoration-accent-rose decoration-2 underline-offset-4 transition-all">Events</a>
+          <a href="#impressionen" class="text-text-mid hover:text-text-high hover:underline decoration-accent-rose decoration-2 underline-offset-4 transition-all">Impressionen</a>
+          <a href="#ueber-uns" class="text-text-mid hover:text-text-high hover:underline decoration-accent-rose decoration-2 underline-offset-4 transition-all">Über uns</a>
+        </div>
+      </div>
+
+      <div class="hidden md:block">
+        <a href={`${import.meta.env.BASE_URL}reservierung`} class="bg-transparent border border-accent-rose text-accent-rose px-6 py-2 hover:bg-accent-rose hover:text-ink font-medium transition-all duration-200">
+          Reservieren
+        </a>
+      </div>
+
+      <div class="md:hidden">
+        <button type="button" class="mobile-menu-button text-text-mid hover:text-text-high focus:outline-none focus:text-text-high" aria-expanded="false">
+          <span class="sr-only">Hauptmenü öffnen</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-menu md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+    <div class="px-2 pt-2 pb-3 space-y-1 bg-surface-1 border-t border-line-gold/20">
+      <a href="#menu-teaser" class="block px-3 py-2 text-text-mid hover:text-text-high hover:bg-surface-2 transition-all">Karten</a>
+      <a href="#events" class="block px-3 py-2 text-text-mid hover:text-text-high hover:bg-surface-2 transition-all">Events</a>
+      <a href="#impressionen" class="block px-3 py-2 text-text-mid hover:text-text-high hover:bg-surface-2 transition-all">Impressionen</a>
+      <a href="#ueber-uns" class="block px-3 py-2 text-text-mid hover:text-text-high hover:bg-surface-2 transition-all">Über uns</a>
+      <a href="/reservierung" class="block mx-3 mt-4 mb-2 px-4 py-2 bg-transparent border border-accent-rose text-accent-rose text-center hover:bg-accent-rose hover:text-ink transition-all">Reservieren</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-button') as HTMLElement;
+    const mobileMenu = document.querySelector('.mobile-menu') as HTMLElement;
+
+    if (mobileMenuButton && mobileMenu) {
+      let isOpen = false;
+      mobileMenuButton.addEventListener('click', function() {
+        isOpen = !isOpen;
+        mobileMenuButton.setAttribute('aria-expanded', isOpen.toString());
+        mobileMenu.style.maxHeight = isOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+          mobileMenu.style.maxHeight = '0px';
+          isOpen = false;
+          mobileMenuButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  });
+</script>

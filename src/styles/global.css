@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Custom Restaurant Fonts */
+@font-face {
+  font-family: 'MaradesBois';
+  src: url('/fonts/MaradesBoisv-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tailwind CSS v4 theme configuration */
+@theme {
+  --color-ink: #0E0E10;
+  --color-surface-1: #1B1B1F;
+  --color-surface-2: #2B2B31;
+  --color-accent-rose: #F0C9B6;
+  --color-accent-wine: #6B1F2B;
+  --color-text-high: #F8F4EF;
+  --color-text-mid: #D9D6CF;
+  --color-line-gold: #C9A77A;
+  
+  --font-family-heading: "MaradesBois", "Cormorant Garamond", serif;
+  --font-family-body: "Manrope", sans-serif;
+  --font-sans: "Manrope", sans-serif;
+  --font-serif: "MaradesBois", "Cormorant Garamond", serif;
+  
+  --font-size-body: 17px;
+  --font-size-body-lg: 18px;
+  --line-height-body: 1.6;
+  --line-height-body-lg: 1.65;
+  
+  --letter-spacing-heading: 0.025em;
+}
+
+/* Ensure MaradesBois is applied to headings */
+.font-heading {
+  font-family: "MaradesBois", "Cormorant Garamond", serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "MaradesBois", "Cormorant Garamond", serif;
+}

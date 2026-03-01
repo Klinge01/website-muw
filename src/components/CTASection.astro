@@ -1,0 +1,62 @@
+---
+---
+
+<section class="py-20 bg-gradient-to-b from-surface-1 to-ink">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    
+    <!-- Quote -->
+    <blockquote class="mb-12">
+      <p class="text-3xl md:text-4xl font-heading italic text-accent-wine leading-relaxed mb-4">
+        „Wir freuen uns auf Ihren Besuch."
+      </p>
+    </blockquote>
+    
+    <!-- Main CTA -->
+    <div class="mb-8">
+      <a 
+        href={`${import.meta.env.BASE_URL}reservierung`}
+        class="inline-flex items-center px-12 py-4 bg-transparent border-2 border-accent-rose text-accent-rose text-xl font-medium hover:bg-accent-rose hover:text-ink transition-all duration-200 focus:ring-2 focus:ring-accent-rose focus:ring-offset-2 focus:ring-offset-ink"
+      >
+        <svg class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        Jetzt reservieren
+      </a>
+    </div>
+    
+    <!-- Secondary Actions -->
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-text-mid">
+      <a 
+        href="tel:+436763867782" 
+        class="flex items-center hover:text-accent-rose transition-colors"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        +43 676 386 7782
+      </a>
+      
+      <span class="text-line-gold">•</span>
+      
+      <a 
+        href="mailto:reservierung@maedchenundwolf.at" 
+        class="flex items-center hover:text-accent-rose transition-colors"
+      >
+        <svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        E-Mail schreiben
+      </a>
+    </div>
+    
+    <!-- Hours reminder -->
+    <div class="mt-12 pt-8 border-t border-line-gold/20">
+      <p class="text-text-mid text-sm">
+        <strong class="text-text-high">Reservierungen ab 7 Personen</strong> bitte per Telefon oder E-Mail.
+      </p>
+      <p class="text-text-mid/80 text-xs mt-2">
+        Falls online kein passender Tisch sichtbar ist, kontaktieren Sie uns – wir prüfen Alternativen.
+      </p>
+    </div>
+  </div>
+</section>

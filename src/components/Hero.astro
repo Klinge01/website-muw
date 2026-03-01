@@ -1,0 +1,107 @@
+---
+import AnimatedLogo from "./AnimatedLogo.astro";
+---
+
+<section
+    class="hero-section relative h-[calc(100vh-5rem)] flex items-center bg-gradient-to-b from-ink to-surface-1"
+    style="background-color: #0E0E10;"
+>
+    <!-- Base layer: blurred image + dark overlay -->
+    <div class="absolute inset-0 overflow-hidden">
+        <img
+            src={`${import.meta.env.BASE_URL}images/restaurant-interior-3.webp`}
+            alt="MÄDCHEN & WOLF Restaurant Interior"
+            class="w-full h-full object-cover blur-[2px] scale-105"
+            loading="eager"
+            fetchpriority="high"
+            id="hero-background"
+        />
+        <div class="hero-overlay absolute inset-0 bg-black z-10" style="opacity: 0.66;">
+        </div>
+    </div>
+
+    <!-- Flashlight layer: clear image revealed by cursor -->
+    <div
+        class="hero-flashlight absolute inset-0 overflow-hidden z-20 pointer-events-none opacity-0"
+    >
+        <img
+            src={`${import.meta.env.BASE_URL}images/restaurant-interior-3.webp`}
+            alt=""
+            aria-hidden="true"
+            class="w-full h-full object-cover scale-105"
+            loading="eager"
+        />
+    </div>
+
+    <div
+        class="relative z-30 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 hero-content"
+    >
+        <div class="text-center">
+            <div class="mb-6 max-w-xs mx-auto text-center">
+                <div class="hero-logo-shadow flex justify-center">
+                    <AnimatedLogo />
+                </div>
+            </div>
+            <h1
+                class="text-3xl md:text-5xl lg:text-6xl font-heading font-semibold tracking-heading text-text-high mt-4 uppercase"
+            >
+                MÄDCHEN & WOLF
+            </h1>
+            <p
+                class="text-lg md:text-xl text-text-mid mb-8 leading-relaxed max-w-2xl mx-auto"
+            >
+                Regionale Küche mit Charakter im Herzen Wiener Neustadts.
+            </p>
+            <p
+                class="text-sm md:text-base text-accent-rose mb-8 uppercase tracking-wider"
+            >
+                Sinnlich. Ehrlich. Überraschend.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                    href="/reservierung"
+                    class="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-accent-rose text-accent-rose text-base font-medium hover:bg-accent-rose hover:text-ink transition-all duration-200"
+                    >Tisch reservieren</a
+                >
+                <a
+                    href="#menu-teaser"
+                    class="inline-flex items-center justify-center px-6 py-3 text-text-high text-base font-medium border-2 border-transparent hover:border-line-gold hover:text-accent-rose transition-all duration-200"
+                    >Speisekarten ansehen</a
+                >
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const hero = document.querySelector('.hero-section') as HTMLElement | null;
+    const flashlight = document.querySelector('.hero-flashlight') as HTMLElement | null;
+
+    if (hero && flashlight) {
+        const radius = 120;
+
+        hero.addEventListener('mouseenter', () => {
+            flashlight.style.opacity = '1';
+        });
+
+        hero.addEventListener('mouseleave', () => {
+            flashlight.style.opacity = '0';
+        });
+
+        hero.addEventListener('mousemove', (e: MouseEvent) => {
+            const rect = hero.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            flashlight.style.maskImage = `radial-gradient(circle ${radius}px at ${x}px ${y}px, black 0%, transparent 100%)`;
+            flashlight.style.webkitMaskImage = `radial-gradient(circle ${radius}px at ${x}px ${y}px, black 0%, transparent 100%)`;
+        });
+    }
+</script>
+
+<style>
+    .hero-flashlight {
+        transition: opacity 0.3s ease;
+    }
+</style>

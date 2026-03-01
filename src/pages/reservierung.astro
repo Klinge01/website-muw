@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { openingHours } from '../utils/openingHours';
+---
+
+<Layout title="Reservierung – Mädchen & Wolf" description="Reservieren Sie Ihren Tisch im Mädchen & Wolf. Wir freuen uns auf Ihren Besuch!">
+	<Nav />
+	<main>
+		<!-- Header Section -->
+		<section class="py-20 bg-gradient-to-b from-ink to-surface-1">
+			<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+				<h1 class="text-4xl md:text-6xl font-heading font-semibold tracking-heading text-text-high mb-6">
+					Reservierung
+				</h1>
+				<p class="text-xl text-text-mid leading-relaxed">
+					Wir freuen uns auf Ihren Besuch!
+				</p>
+			</div>
+		</section>
+
+		<!-- Reservation Content -->
+		<section class="py-20 bg-surface-1">
+			<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+				
+				<!-- Intro -->
+				<div class="text-center mb-12">
+					<p class="text-2xl font-heading text-text-high leading-relaxed">
+						Sichern Sie sich Ihren Platz für ein unvergessliches kulinarisches Erlebnis.
+					</p>
+
+					<div class="text-left max-w-3xl mx-auto mb-10 bg-surface-2 border border-line-gold/20 p-6">
+						<h2 class="text-xl font-heading text-text-high mb-4">Wichtige Informationen zur Buchung</h2>
+						<p class="text-text-mid mb-4">Vielen Dank, dass Sie unser Online-Reservierungssystem nutzen. Nachfolgend finden Sie einige wichtige Informationen zu Ihrer Buchung:</p>
+						<p class="text-text-mid mb-3">Für Online-Reservierungen ist eine maximale Aufenthaltsdauer von 2,5h Stunden vorgesehen. Sollten Sie länger bei uns verweilen wollen, teilen Sie uns dies bitte im Feld Anmerkungen mit – wir versuchen, Ihrem Wunsch nachzukommen.</p>
+						<p class="text-text-mid mb-3">Für Reservierungen ab 8 Personen bitten wir um direkte Kontaktaufnahme per E-Mail an reservierung@maedchenundwolf.at oder telefonisch unter +43 676 38 677 82.</p>
+						<p class="text-text-mid">Sollte online kein passender Tisch für Ihren Wunschtermin oder Ihre Gruppengröße verfügbar sein, zögern Sie bitte nicht, uns ebenfalls per E-Mail zu kontaktieren. Wir prüfen gerne, ob wir Ihnen dennoch einen Platz anbieten können.</p>
+					</div>
+					
+					<!-- Primary Contact Methods -->
+					<div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+						<a 
+							href="tel:+436763867782" 
+							class="flex items-center px-8 py-4 bg-transparent border-2 border-accent-rose text-accent-rose hover:bg-accent-rose hover:text-ink transition-all duration-200 focus:ring-2 focus:ring-accent-rose focus:ring-offset-2 focus:ring-offset-surface-1"
+						>
+							<svg class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+							</svg>
+							+43 676 386 7782
+						</a>
+						
+						<a 
+							href="mailto:reservierung@maedchenundwolf.at" 
+							class="flex items-center px-8 py-4 bg-transparent border border-line-gold text-text-high hover:border-accent-rose hover:text-accent-rose transition-all duration-200 focus:ring-2 focus:ring-accent-rose focus:ring-offset-2 focus:ring-offset-surface-1"
+						>
+							<svg class="w-6 h-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+							</svg>
+							E-Mail schreiben
+						</a>
+					</div>
+				</div>
+
+				<!-- Wichtige Hinweise - Horizontal -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+					<!-- Large Groups -->
+					<div class="bg-surface-2 border border-accent-rose/30 p-5">
+						<div class="flex items-start space-x-3">
+							<svg class="w-5 h-5 text-accent-rose mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+							</svg>
+							<div>
+								<h3 class="text-base font-medium text-text-high mb-1">Gruppen ab 7 Personen</h3>
+								<p class="text-text-mid text-sm leading-relaxed">
+									Bitte per <a href="mailto:reservierung@maedchenundwolf.at" class="text-accent-rose hover:underline">E-Mail</a> oder <a href="tel:+436763867782" class="text-accent-rose hover:underline">Telefon</a>.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- No Online Availability -->
+					<div class="bg-ink border border-line-gold/20 p-5">
+						<div class="flex items-start space-x-3">
+							<svg class="w-5 h-5 text-accent-rose mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+							</svg>
+							<div>
+								<h3 class="text-base font-medium text-text-high mb-1">Kein Tisch online?</h3>
+								<p class="text-text-mid text-sm leading-relaxed">
+									Kontaktieren Sie uns – wir prüfen gerne Alternativen.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Cancellation Policy -->
+					<div class="bg-surface-2 border border-line-gold/20 p-5">
+						<div class="flex items-start space-x-3">
+							<svg class="w-5 h-5 text-accent-rose mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+							</svg>
+							<div>
+								<h3 class="text-base font-medium text-text-high mb-1">Stornierung</h3>
+								<p class="text-text-mid text-sm leading-relaxed">
+									Bitte mindestens 24 Stunden im Voraus Bescheid geben.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Two Column: Booking (3) + Hours (2) -->
+				<div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+					<!-- Booking Widget - 3 columns -->
+					<div class="lg:col-span-3">
+						<div class="w-full overflow-x-auto">
+							<iframe 
+								src="https://booking.wbvsoftware.at/booking.aspx?vendor=b8f81a20-7b0c-4f26-bcd6-d2ce86f7510c&cbg=D3D3D3&cld=000000&cfd=000000&cfl=000000&cmd=000000&cml=fff" 
+								class="w-full max-w-full"
+								style="border:none;height:650px;"
+								title="Online Reservierung"
+							></iframe>
+						</div>
+					</div>
+
+					<!-- Opening Hours - 2 columns -->
+					<div class="lg:col-span-2">
+						<div class="bg-surface-2 border border-line-gold/20 p-6">
+							<h3 class="text-lg font-medium text-text-high mb-4">
+								Öffnungszeiten
+							</h3>
+							<div class="space-y-3 mb-4">
+								{openingHours.map((item) => (
+									<div class="flex justify-between items-center">
+										<span class="text-text-high font-medium">
+											{item.day}
+										</span>
+										<span class={`text-sm ${item.isClosedDay ? 'text-accent-wine' : 'text-text-mid'}`}>
+											{item.hours}
+										</span>
+									</div>
+								))}
+							</div>
+							
+							<div class="pt-4 border-t border-line-gold/20">
+								<h4 class="text-sm font-medium text-accent-rose mb-3">Küchenzeiten</h4>
+								<div class="space-y-2">
+									{openingHours.filter(item => item.kitchen).map((item) => (
+										<div class="flex justify-between items-center">
+											<span class="text-text-mid text-sm">{item.day}</span>
+											<span class="text-text-mid text-xs">{item.kitchen}</span>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Restaurant Interior Image -->
+				<div class="mt-16">
+					<div class="aspect-[21/9] border border-line-gold/20 overflow-hidden relative">
+						<img 
+							src={`${import.meta.env.BASE_URL}images/restaurant-ambiance-1.webp`} 
+							alt="Restaurant Interieur - Mädchen & Wolf"
+							class="w-full h-full object-cover"
+							loading="lazy"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<Footer />
+</Layout>

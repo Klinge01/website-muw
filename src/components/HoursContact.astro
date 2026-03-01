@@ -1,0 +1,114 @@
+---
+const openingHours = [
+    { day: "Dienstag", hours: "17:30 - 23:00" },
+    { day: "Mittwoch", hours: "17:30 - 23:00" },
+    { day: "Donnerstag", hours: "11:30 - 14:00 / 17:30 - 23:00" },
+    { day: "Freitag", hours: "11:30 - 14:00 / 17:30 - 23:00" },
+    { day: "Samstag", hours: "17:30 - 23:00" },
+];
+---
+
+<section class="py-20 bg-ink">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            <div>
+                <h2
+                    class="text-3xl font-heading font-semibold tracking-heading text-text-high mb-8"
+                >
+                    Öffnungszeiten
+                </h2>
+                <div class="bg-surface-1 border border-line-gold/20 p-6">
+                    <div class="space-y-4">
+                        {
+                            openingHours.map((item) => (
+                                <div class="flex justify-between items-center py-2 border-b border-line-gold/10 last:border-b-0">
+                                    <span class="text-text-high font-medium">
+                                        {item.day}
+                                    </span>
+                                    <span class="text-text-mid text-sm">
+                                        {item.hours}
+                                    </span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2
+                    class="text-3xl font-heading font-semibold tracking-heading text-text-high mb-8"
+                >
+                    Kontakt
+                </h2>
+                <div class="bg-surface-1 border border-line-gold/20 p-6">
+                    <h3
+                        class="text-xl font-heading font-semibold text-text-high mb-6"
+                    >
+                        MÄDCHEN & WOLF
+                    </h3>
+                    <div class="mb-6">
+                        <h4
+                            class="text-sm font-medium text-accent-rose uppercase tracking-wide mb-2"
+                        >
+                            Adresse
+                        </h4>
+                        <address
+                            class="text-text-mid not-italic leading-relaxed"
+                        >
+                            Lange Gasse 20<br />2700 Wiener Neustadt<br
+                            />Österreich
+                        </address>
+                    </div>
+                    <div class="mb-6">
+                        <h4
+                            class="text-sm font-medium text-accent-rose uppercase tracking-wide mb-2"
+                        >
+                            Telefon
+                        </h4>
+                        <a
+                            href="tel:+436763867782"
+                            class="text-text-high hover:text-accent-rose transition-colors"
+                            >+43 676 386 7782</a
+                        >
+                    </div>
+                    <div class="mb-6">
+                        <h4
+                            class="text-sm font-medium text-accent-rose uppercase tracking-wide mb-2"
+                        >
+                            E-Mail
+                        </h4>
+                        <a
+                            href="mailto:reservierung@maedchenundwolf.at"
+                            class="text-text-high hover:text-accent-rose transition-colors break-all"
+                            >reservierung@maedchenundwolf.at</a
+                        >
+                    </div>
+                    <div>
+                        <h4
+                            class="text-sm font-medium text-accent-rose uppercase tracking-wide mb-3"
+                        >
+                            Folgen Sie uns
+                        </h4>
+                        <a
+                            href="https://www.instagram.com/maedchenundwolf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-text-mid hover:text-accent-rose transition-colors"
+                            aria-label="Instagram"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.88 1.62a1.12 1.12 0 1 1 0 2.25 1.12 1.12 0 0 1 0-2.25zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"
+                                ></path></svg
+                            >
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

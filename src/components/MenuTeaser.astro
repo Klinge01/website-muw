@@ -1,0 +1,28 @@
+---
+const menuItems = [
+  { title: "ABENDKARTE", description: "Als PDF öffnen", href: `${import.meta.env.BASE_URL}pdfs/Abendkarte.pdf` },
+  { title: "WIRTSHAUS LUNCH", description: "Als PDF öffnen", href: `${import.meta.env.BASE_URL}pdfs/Wirtshaus-Lunch.pdf` },
+  { title: "WEINKARTE", description: "Als PDF öffnen", href: `${import.meta.env.BASE_URL}pdfs/Wine List.pdf` }
+];
+---
+
+<section id="menu-teaser" class="py-20 bg-ink">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-heading font-semibold tracking-heading text-text-high mb-4">Karten</h2>
+      <p class="text-xl text-text-mid max-w-2xl mx-auto">Alle Speisekarten öffnen als PDF in einem neuen Tab.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {menuItems.map((item) => (
+        <a href={item.href} target="_blank" rel="noopener noreferrer" class="group block bg-surface-1 border border-accent-rose/30 hover:border-accent-rose transition-all duration-200 hover:shadow-card-hover overflow-hidden p-8">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-xl font-heading font-semibold text-text-high group-hover:text-accent-rose transition-colors">{item.title}</h3>
+            <span class="text-xs px-2 py-1 bg-accent-rose text-ink rounded">PDF</span>
+          </div>
+          <p class="text-text-mid text-sm">{item.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
