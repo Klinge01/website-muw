@@ -60,7 +60,7 @@ import AnimatedLogo from "./AnimatedLogo.astro";
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                    href="/reservierung"
+                    href={`${import.meta.env.BASE_URL}reservierung`}
                     class="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-accent-rose text-accent-rose text-base font-medium hover:bg-accent-rose hover:text-ink transition-all duration-200"
                     >Tisch reservieren</a
                 >

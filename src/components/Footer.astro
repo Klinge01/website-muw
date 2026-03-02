@@ -2,14 +2,6 @@
 import { condensedHours } from "../utils/openingHours";
 
 const currentYear = new Date().getFullYear();
-
-const openingHours = [
-    { day: "Di", hours: "17:30-23:00" },
-    { day: "Mi", hours: "17:30-23:00" },
-    { day: "Do", hours: "11:30-14:00 / 17:30-23:00" },
-    { day: "Fr", hours: "11:30-14:00 / 17:30-23:00" },
-    { day: "Sa", hours: "17:30-23:00" },
-];
 ---
 
 <footer class="bg-surface-2 border-t border-line-gold/20">
@@ -58,7 +50,7 @@ const openingHours = [
                 </h3>
                 <div class="space-y-3">
                     {
-                        openingHours.map((item) => (
+                        condensedHours.map((item) => (
                             <div class="flex justify-between items-center">
                                 <span class="text-text-mid font-medium">
                                     {item.day}

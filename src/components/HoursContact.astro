@@ -1,11 +1,7 @@
 ---
-const openingHours = [
-    { day: "Dienstag", hours: "17:30 - 23:00" },
-    { day: "Mittwoch", hours: "17:30 - 23:00" },
-    { day: "Donnerstag", hours: "11:30 - 14:00 / 17:30 - 23:00" },
-    { day: "Freitag", hours: "11:30 - 14:00 / 17:30 - 23:00" },
-    { day: "Samstag", hours: "17:30 - 23:00" },
-];
+import { openingHours as allHours } from "../utils/openingHours";
+
+const openingHours = allHours.filter(item => !item.isClosedDay);
 ---
 
 <section class="py-20 bg-ink">

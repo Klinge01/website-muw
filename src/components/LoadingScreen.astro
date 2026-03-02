@@ -73,14 +73,13 @@ import AnimatedLogo from './AnimatedLogo.astro';
     
     if (!loadingScreen) return;
     
-    // Check if this is a navigation within the site or a fresh page load
-    const isNavigation = window.performance && 
-                         window.performance.navigation && 
-                         window.performance.navigation.type === window.performance.navigation.TYPE_NAVIGATE;
-    
-    // Alternative check using sessionStorage for better browser support
+    // Check if this is a fresh navigation (not back/forward or reload)
+    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    const isNavigation = navEntries.length > 0 && navEntries[0].type === 'navigate';
+
+    // Check if user already visited in this session
     const hasVisited = sessionStorage.getItem('site-visited');
-    
+
     if (hasVisited && isNavigation) {
       // Hide loading screen immediately if it's navigation within site
       loadingScreen.style.display = 'none';

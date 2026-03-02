@@ -5,14 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "npm run optimize-images && astro build && npm run clean-jpg",
-    "build:github": "BASE_PATH=/maedchen_und_wolf_public/ SITE_URL=https://klinge01.github.io npm run build",
-    "build:production": "BASE_PATH=/ npm run build",
     "clean-jpg": "node scripts/clean-jpg.js",
     "preview": "astro preview",
     "astro": "astro",
     "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.5",
     "tailwindcss": "^4.1.12"
