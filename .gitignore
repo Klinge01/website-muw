@@ -139,7 +139,8 @@ vite.config.ts.timestamp-*
 *.psd
 .DS_Store
 dist/
-*.md
 .claude/
-
-public/images/*.webp
+EMAIL_REQUEST_CHECKLIST.md
+FINAL_REPORT.md
+IMAGE_OPTIMIZATION.md
+IMPLEMENTATION_PLAN.md
